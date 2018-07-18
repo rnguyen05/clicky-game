@@ -22,9 +22,8 @@ User can restart game by clicking "Start Over" button. The app will reset all sc
   https://react-mario-game.herokuapp.com/
 
 ## Video Demo
-![http://i3.ytimg.com/vi/Ho1g_sPSFeE/hqdefault.jpg](https://youtu.be/Ho1g_sPSFeE)
+![Image ](http://i3.ytimg.com/vi/Ho1g_sPSFeE/hqdefault.jpg?raw=true)(https://youtu.be/Ho1g_sPSFeE)
 
 ## Screenshots
-![Image of Home Page](https://github.com/rnguyen05/ScrapeSiteMongoDB/blob/master/screenshots/home.jpg?raw=true)
+![Image of Home Page](https://github.com/rnguyen05/clicky-game/blob/master/images/MemoryChallengeGame.jpg?raw=true)
 
-![Image of Saved Articles](https://github.com/rnguyen05/ScrapeSiteMongoDB/blob/master/screenshots/savedArticles.jpg?raw=true)
