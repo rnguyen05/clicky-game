@@ -3,21 +3,19 @@
 }
 
 .App-header {
-  /* background-color: #222; */
   width: 100%;
   overflow: hidden;
-  /* padding: 20px; */
   color: white;
 }
 
 .App-title {
-  font-size: 30pt;
+  /* font-size: 30pt; */
   font-family: 'Press Start 2P', cursive;
   color: black;
 }
 
 .message {
-  font-size: 15pt;
+  /* font-size: 15pt; */
   font-family: 'Press Start 2P', cursive;
   color: black;
 }
@@ -25,3 +23,4 @@
 .Jumbotron {
   height: 250px;
 }
+

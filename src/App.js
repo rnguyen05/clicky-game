@@ -1,87 +1,84 @@
 import React, { Component } from 'react';
-import mario from './mario.json';
+import images from './mario.json';
 import Wrapper from './components/Wrapper';
 import MarioCard from './components/MarioCard';
-import './App.css';
 import { Jumbotron } from 'reactstrap';
+import './App.css';
+
 
 
 class App extends Component {
-
   state = {
     currentScore: 0,
     topScore: 0,
     message: "Click an image to begin.",
-    charImages: mario,
-    unselectedImg: mario
+    charImages: images,
+    unselectedImg: images
   }
 
+  //Shuffle Array function
   shuffleArray = array => {
     for (let i = array.length - 1; i > 0; i--) {
-      let j = Math.floor(Math.random() * (i + 1));
-      let temp = array[i];
-      array[i] = array[j];
-      array[j] = temp;
+        let j = Math.floor(Math.random() * (i + 1));
+        let temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
     }
   }
 
   selectCharacter = character => {
+    //Using array.find function to find the first element in array that sattisfies the condition
     const findCharacter = this.state.unselectedImg.find(charImg => charImg.character === character);
 
+    //If there is no matched element 
     if (findCharacter === undefined) {
       this.setState({
-        message: "You guessed incorrectly!",
-        topScore: (this.state.currentScore > this.state.topScore) ? this.state.currentScore : this.state.topScore,
-        currentScore: 0,
-        charImages: mario,
-        unselectedImg: mario
+          message: "You guessed incorrectly!",
+          topScore: (this.state.currentScore > this.state.topScore) ? this.state.currentScore : this.state.topScore,
+          currentScore: 0,
+          charImages: images,
+          unselectedImg: images
       });
     }
     else {
-      const newChar = this.state.unselectedImg.filter(charImg => charImg.character !== character);
+      const newCharacter = this.state.unselectedImg.filter(charImg => charImg.character !== character);
 
       this.setState({
-        message: "You guessed correctly!",
-        currentScore: this.state.currentScore + 1,
-        charImages: mario,
-        unselectedImg: newChar
+          message: "You guessed correctly!",
+          currentScore: this.state.currentScore + 1,
+          charImages: images,
+          unselectedImg: newCharacter
       })
     }//End else
-    this.shuffleArray(mario);
-  }//End if
 
+    //Invoke shuffleArray to shuffle images array
+    this.shuffleArray(images);
+  }//End if
 
   render() {
     return (
-      <div>
-        
-          
+      <div>           
         <div className="App">
-
-        <header>
-        <Jumbotron className="Jumbotron">
-            <h1 className="App-title">Mario Memory Challenge Game</h1>
-            <h4 className="message">++++++++++++++++++++++++++++++</h4>
-            <h4 className="message">{this.state.message}</h4>
-            <h4 className="message">Current Score: {this.state.currentScore}</h4>
-            <h4 className="message">Top Score: {this.state.topScore}</h4>
+            <Jumbotron>
+                <h2 className="App-title">Mario Memory Challenge Game</h2>
+                <h7 className="message">+++++++++++++++++++++++++++++++</h7><br />
+                <h7 className="message">{this.state.message}</h7><br />
+                <h7 className="message">Current Score: {this.state.currentScore}</h7><br />
+                <h7 className="message">Top Score: {this.state.topScore}</h7>
             </Jumbotron>
-            </header>
         </div>
-        
-        
         <Wrapper>
-       {
-         this.state.charImages.map(image => (
-            <MarioCard 
-                key={image.id}
-                character = {image.character}
-                charImage = {image.charImage}
-                selectCharacter = {this.selectCharacter}
-                currentScore = {this.state.currentScore}
-            />
-         ))
-       }
+            {
+              this.state.charImages.map(image => (
+                  <MarioCard 
+                      key={image.id}
+                      character = {image.character}
+                      charImage = {image.charImage}
+                      selectCharacter = {this.selectCharacter}
+                      currentScore = {this.state.currentScore}
+                  />
+              ))
+            }
       </Wrapper>
       </div>
     );
