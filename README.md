@@ -1,4 +1,4 @@
-# Mario Memory Challenge Game
+# Memory Challenge Game
 
 ## Overview
 This app is the memory game with React. This app is built with application UI's breakup into components, 
@@ -22,7 +22,7 @@ User can restart game by clicking "Start Over" button. The app will reset all sc
   https://react-mario-game.herokuapp.com/
 
 ## Video Demo
-![Image ](http://i3.ytimg.com/vi/Ho1g_sPSFeE/hqdefault.jpg?raw=true)(https://youtu.be/Ho1g_sPSFeE)
+![(http://i3.ytimg.com/vi/Ho1g_sPSFeE/hqdefault.jpg?raw=true)](https://youtu.be/Ho1g_sPSFeE)
 
 ## Screenshots
 ![Image of Home Page](https://github.com/rnguyen05/clicky-game/blob/master/images/MemoryChallengeGame.jpg?raw=true)
