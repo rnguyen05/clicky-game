@@ -22,7 +22,7 @@ User can restart game by clicking "Start Over" button. The app will reset all sc
   https://react-mario-game.herokuapp.com/
 
 ## Video Demo
-![https://i9.ytimg.com/vi/Ho1g_sPSFeE/mq1.jpg](https://youtu.be/Ho1g_sPSFeE)
+![http://i3.ytimg.com/vi/Ho1g_sPSFeE/hqdefault.jpg](https://youtu.be/Ho1g_sPSFeE)
 
 ## Screenshots
 ![Image of Home Page](https://github.com/rnguyen05/ScrapeSiteMongoDB/blob/master/screenshots/home.jpg?raw=true)
