@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import images from './mario.json';
+import characters from './characters.json';
 import Wrapper from './components/Wrapper';
 import MarioCard from './components/MarioCard';
 import { Jumbotron , Button } from 'reactstrap';
@@ -10,8 +10,8 @@ class App extends Component {
     currentScore: 0,
     topScore: 0,
     message: "Click an image to begin.",
-    charImages: images,
-    unselectedImg: images
+    characters: characters,
+    unselectedCharacters: characters
   };
 
   //Shuffle Array function
@@ -31,38 +31,45 @@ class App extends Component {
         currentScore: 0,
         topScore: 0,
         message: "Click an image to begin.",
-        charImages: images,
-        unselectedImg: images
+        allCharacters: characters,
+        unselectedCharacters: characters
       });
   };
 
-  selectCharacter = character => {
-    //Using array.find function to find the first element in array that sattisfies the condition
-    const findCharacter = this.state.unselectedImg.find(charImg => charImg.character === character);
+  //selectCharacter is called by onClick event in MarioCard.js
+  //and receives character parameter
+  selectCharacter = selectCharName => {
+    //Using array.find function to find the first element in unselectedCharacters array that sattisfies the condition
+    //if no character matched then findCharacter will equals to undefined
+    const findCharacter = this.state.unselectedCharacters.find(char => char.charName === selectCharName);
 
-    //If there is no matched element 
+    //If no character found in the unselectedCharacters array
+    //Then setState for State properties: topScore will be replaced with currentScore if currentScore is higher than topScore
+    //and start new game
     if (findCharacter === undefined) {
         this.setState({
             message: "You guessed incorrectly!",
             topScore: (this.state.currentScore > this.state.topScore) ? this.state.currentScore : this.state.topScore,
             currentScore: 0,
-            charImages: images,
-            unselectedImg: images
+            allCharacters: characters,
+            unselectedCharacters: characters
         });
     }
+    //If character is found in the unselectedCharacters array
+    //Then use array.filter to create a new array (newunselectedCharacters)
     else {
-        const newCharacter = this.state.unselectedImg.filter(charImg => charImg.character !== character);
+        const newUnselectedCharacters = this.state.unselectedCharacters.filter(char => char.charName !== selectCharName);
 
         this.setState({
             message: "You guessed correctly!",
             currentScore: this.state.currentScore + 1,
-            charImages: images,
-            unselectedImg: newCharacter
+            allCharacters: characters,
+            unselectedCharacters: newUnselectedCharacters
         });
     };//End else
 
     //Invoke shuffleArray to shuffle images array
-    this.shuffleArray(images);
+    this.shuffleArray(characters);
   };//End if
 
   render() {
@@ -80,13 +87,15 @@ class App extends Component {
         </div>
         <Wrapper>
             {
-              this.state.charImages.map(image => (
+              //map function iterates thru characters array and displays individual image
+              //and pass to MarioCard with key, character, charImage, currentScore and function selectCharacter 
+              this.state.characters.map(character => (
                   <MarioCard 
-                      key={image.id}
-                      character = {image.character}
-                      charImage = {image.charImage}
-                      selectCharacter = {this.selectCharacter}
+                      key={character.id}
+                      charName = {character.charName}
+                      image = {character.image}
                       currentScore = {this.state.currentScore}
+                      selectCharacter = {this.selectCharacter}
                   />
               ))
             }
